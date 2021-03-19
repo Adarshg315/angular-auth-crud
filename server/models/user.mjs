@@ -1,8 +1,40 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-  email: String,
-  password: String,
+	username: {
+		type: String,
+		required: true,
+		maxlength: 255,
+		unique: true,
+	},
+	password: {
+		type: String,
+		required: true,
+		minlength: 5,
+		maxlength: 1024,
+	},
+	email: {
+		type: String,
+		required: true,
+		minlength: 5,
+		maxlength: 255,
+		unique: true,
+	},
+	company: {
+		type: String,
+		// required: true,
+		maxlength: 255,
+	},
+	address: {
+		type: String,
+		// required: true,
+		maxlength: 255,
+	},
+	dob: {
+		type: Date,
+		// required: true,
+		trim: true,
+	},
 });
 
 export default mongoose.model("user", userSchema, "users");
