@@ -1,0 +1,77 @@
+<div class="example-container mat-elevation-z8">
+  <h2>Edit Employees</h2>
+  <div class="example-loading-shade" *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+  <div class="button-row">
+    <a mat-flat-button color="primary" [routerLink]="['/']"
+      ><mat-icon>list</mat-icon></a
+    >
+  </div>
+  <mat-card class="example-card">
+    <form [formGroup]="empForm" (ngSubmit)="onFormSubmit()">
+      <mat-form-field class="example-full-width">
+        <mat-label>Employee Name</mat-label>
+        <input
+          matInput
+          placeholder="Employee Name"
+          formControlName="empName"
+          [errorStateMatcher]="matcher"
+        />
+        <mat-error>
+          <span
+            *ngIf="
+              !empForm.get('empName').valid && empForm.get('empName').touched
+            "
+            >Please enter Employee Name</span
+          >
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Employee email</mat-label>
+        <input
+          matInput
+          placeholder="Employee email"
+          formControlName="empEmail"
+          [errorStateMatcher]="matcher"
+        />
+        <mat-error>
+          <span
+            *ngIf="
+              !empForm.get('empEmail').valid && empForm.get('empEmail').touched
+            "
+            >Please enter Employee Email</span
+          >
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field class="example-full-width">
+        <mat-label>Employee password</mat-label>
+        <input
+          matInput
+          placeholder="Employee password"
+          formControlName="empPassword"
+          [errorStateMatcher]="matcher"
+        />
+        <mat-error>
+          <span
+            *ngIf="
+              !empForm.get('empPassword').valid &&
+              empForm.get('empPassword').touched
+            "
+            >Please enter Employee Email</span
+          >
+        </mat-error>
+      </mat-form-field>
+      <div class="button-row">
+        <button
+          type="submit"
+          [disabled]="!empForm.valid"
+          mat-flat-button
+          color="primary"
+        >
+          <mat-icon>save</mat-icon>
+        </button>
+      </div>
+    </form>
+  </mat-card>
+</div>

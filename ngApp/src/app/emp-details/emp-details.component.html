@@ -1,0 +1,36 @@
+<div class="example-container mat-elevation-z8">
+  <h2>Employees Details</h2>
+  <div class="example-loading-shade" *ngIf="isLoadingResults">
+    <mat-spinner *ngIf="isLoadingResults"></mat-spinner>
+  </div>
+  <div class="button-row">
+    <a mat-flat-button color="primary" [routerLink]="['/']"
+      ><mat-icon>list</mat-icon></a
+    >
+  </div>
+  <mat-card class="example-card">
+    <mat-card-header>
+      <mat-card-title>
+        <!-- <h2>{{ emp.empName }}</h2> -->
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <dl>
+        <dt>Name:</dt>
+        <dd>{{ emp.empName }}</dd>
+        <dt>Email:</dt>
+        <dd>{{ emp.empEmail }}</dd>
+        <dt>Update Date:</dt>
+        <dd>{{ emp.updated | date }}</dd>
+      </dl>
+    </mat-card-content>
+    <mat-card-actions>
+      <a mat-flat-button color="primary" [routerLink]="['/edit-emp', emp._id]"
+        ><mat-icon>edit</mat-icon> Employees</a
+      >
+      <a mat-flat-button color="warn" (click)="deleteEmployees(emp._id)"
+        ><mat-icon>delete</mat-icon> Employees</a
+      >
+    </mat-card-actions>
+  </mat-card>
+</div>
